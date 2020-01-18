@@ -16,7 +16,7 @@ function Store({ children }) {
   const [time, setTime] = useState(90);
   const [result, setResult] = useState(null)
   const [page2show, setPage] = useState("Welcome")
-  const [name, setName] = useState("Cats")
+  const [name, setName] = useState("")
 
   
 
