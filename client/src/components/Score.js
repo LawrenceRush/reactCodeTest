@@ -8,7 +8,7 @@ function Score() {
     let {score} = useContext(QuizContext) 
     return (
         <span>
-            Score: {score}
+            Score {score}
         </span>
     )
 }

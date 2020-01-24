@@ -1,12 +1,31 @@
 import React,{useContext, useEffect} from 'react'
 import {QuizContext} from '../store/store'
 import Alert from '@material-ui/lab/Alert';
+import {useSpring, animated, config} from 'react-spring'
 
-function makeAlert() {
+
+
+
+function MakeAlert() {
+    const multiAnimation = useSpring({
+        duration: 1000,
+        from: { 
+            position:" absolute",
+            bottom: 0,
+           opacity:0
+        },
+          to: 
+      
+              { 
+                position:" absolute",
+                bottom: 0,
+                opacity:1
+              }
+            });
     return (
-        <Alert severity="success">This is an error alert — check it out!</Alert>
+        <animated.div style ={multiAnimation}> <Alert severity="error">This is an error alert — check it out!</Alert></animated.div>
 
     )
 }
 
-export default makeAlert
+export default MakeAlert

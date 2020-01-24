@@ -3,19 +3,23 @@ import {QuizContext} from '../store/store'
 import Button from '@material-ui/core/Button';
 import GoodAlert from "./GoodAlert"
 import BadAlert from "./BadAlert"
-import {useTransition, animated} from 'react-spring'
+import {useTransition, animated, config} from 'react-spring'
 import { withStyles } from '@material-ui/core/styles';
 
 
 
 function McCon() {
-    
-    const[animate, setAnimate] =  useState(false)
+    const [display, setDisplay] = useState(true)
+    const [quizDone, finishQuiz] = useState(false)
+    const[animate, setAnimate] =  useState(true)
     //let {questions} = (useContext(QuizContext))
     let {questions} = useContext(QuizContext)
+    let {setPage} = useContext(QuizContext)
     let {qIndex} = useContext(QuizContext)
     let {increaseIndex} = useContext(QuizContext) 
     let {increaseScore} = useContext(QuizContext) 
+    let {goToNamePage} = useContext(QuizContext) 
+
     let {result} = useContext(QuizContext) 
     const [wrong, setWrong] = useState(false)
     const [right, setRight  ] = useState(false)
@@ -38,17 +42,21 @@ function McCon() {
     useEffect(()=>{
      showAlert()
     },[qIndex])
+    // useEffect(()=>{
+    //   setAnimate(true)
+    // })
 
     const showAlert = () => {
     if (result === true){
-        setWrong(true)
+        setRight(true)
+        console.log('whats going on')
         setInterval(function(){ 
-            setWrong(false)
+            //setRight(false)
         }, 3000);
     } else if (result === false ){
-                setRight(true)
+                setWrong(true)
             setInterval(function(){ 
-                setRight(false)
+                //setWrong(false)
             }, 3000);
         
     }
@@ -57,10 +65,10 @@ function McCon() {
 }
 
 const slides = useTransition(animate, null, {
-    
+  config: config.slow,
     from: { 
         position: 'absolute',
-        opacity:1,
+        opacity: quizDone ? 0 : 1,
         transform: "translate3d(250vh,0,0)" ,
      
     },
@@ -70,22 +78,39 @@ const slides = useTransition(animate, null, {
         transform: "translate3d(0vh,0,0)",
         left: 0,
         right: 0,
-        margin: "auto"
-        
+        margin: "auto",
+        opacity: quizDone ? 0 : 1,        
         },
     leave: {
         position: 'absolute',
         transform: "translate3d(-250vh,0,0)",
+        opacity: quizDone? 0 : 1,
+        
+        }
        
     }
-  });
+    
+  
+  );
   
 const delayChange = () => {
+  if(qIndex == questions.length -1){
+    finishQuiz(true)
+    console.log("activated")
+    goToNamePage(true)
+  }
   const interval = setInterval(function(){ 
     increaseIndex();
+    if(qIndex == questions.length -1){
+      console.log("activated")
+    }
     clearInterval(interval)
 }, 250);//run this thang every 2 seconds
 }
+
+useEffect(() => {
+console.log(quizDone)
+},[quizDone])
 
 const StyledButton = withStyles({
     root: {
@@ -104,24 +129,21 @@ const StyledButton = withStyles({
   })(Button);
 
 const questionsChoices = questions[qIndex].choices.map((choice, index) => 
-<div key= {index}><StyledButton onClick={(e) => {setAnimate(!animate); delayChange();  increaseScore(choice) }} 
-variant="contained" color="primary">{choice}</StyledButton></div>);
+<div key= {index}><StyledButton onClick={(e) => {increaseScore(choice); setAnimate(!animate); delayChange(); }} 
+variant="contained" color="primary">{choice}</StyledButton>{qIndex}</div>);
     
     return (
-        
+
+      
         <div>
          {slides.map(({ item, key, props }) => (
-           
         <animated.section   style={props} >
         <h1>{questions[qIndex].title}</h1>  
         <div style = {liStyle}>{questionsChoices}</div>
-        { right && <GoodAlert/> }
-        { wrong && <BadAlert/> }
+       
         </animated.section>
-        
-    
-         ))}
-         </div>
+        ))}    
+         </div>    
   )
     
 }

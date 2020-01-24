@@ -1,0 +1,6 @@
+.Button {
+    background-color:white
+  }
+  .Button:hover { /* Increase the specificity */
+    background-color: blue
+  }

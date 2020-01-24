@@ -1,5 +1,7 @@
 import React,{useContext, useEffect} from 'react'
 import {QuizContext} from '../store/store'
+import AccessAlarmsIcon from '@material-ui/icons/AccessAlarms'
+
 function Timer() {
 
     let {time} = useContext(QuizContext)
@@ -15,7 +17,7 @@ function Timer() {
       
     return (
         <span>
-            {time}
+            <AccessAlarmsIcon style = {{fontSize: "1em"}}/> {time}
         </span>
     )
 }

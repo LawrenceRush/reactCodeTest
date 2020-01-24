@@ -17,21 +17,16 @@ function Store({ children }) {
   const [result, setResult] = useState(null)
   const [page2show, setPage] = useState("Welcome")
   const [name, setName] = useState("")
-
+  const [namePage, goToNamePage] = useState(false)
   
 
   
   const increaseIndex = () => {
     if(qIndex < questions.length-1 ){
-      console.log("questions.length: ", questions.length-1)
       setQIndex(qIndex + 1)
-      console.log("q index:", qIndex)
       
-    } else {
-      setPage("NamePage")
+    } 
     }
-    
-  }
  
   const increaseScore = (choice) => {
     if(questions[qIndex].answer == choice){
@@ -63,7 +58,7 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
-console.log(today)
+
     let obj = {"name": name, "score": score, "time": time, "date":today}
     
     fetch('/api/add ', {
@@ -75,11 +70,13 @@ console.log(today)
     })
     .then(res => res.json())
   }
+
+  
    
 
  return (
     <QuizContext.Provider value={{questions, qIndex, increaseIndex,score, increaseScore, time, setTime, result,
-     page2show, setPage, name, handleInputChange, addScore}}>
+     page2show, setPage, name, handleInputChange, addScore, namePage, goToNamePage}}>
       {[children]}
     </QuizContext.Provider>
   )
