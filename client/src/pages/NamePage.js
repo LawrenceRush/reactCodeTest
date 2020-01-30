@@ -18,9 +18,11 @@ const useStyles = makeStyles(theme => ({
 }));
 // 
 function NamePage() {
+  let[nameAbsent, isNameAbsent] = useState(false)
   const[toggle, on] = useState(true)
     const classes = useStyles();
     let {score} = useContext(QuizContext)
+    let {beAnonymous} = useContext(QuizContext)
     let {name} = useContext(QuizContext)
     let {handleInputChange} = useContext(QuizContext)
     let {time} = useContext(QuizContext)
@@ -59,7 +61,11 @@ const numberCircleStyle = {
 background: "DeepSkyBlue"
 }
 
-
+useEffect(()=> {
+if (name != ""){
+  isNameAbsent(false)
+}
+})
 
 const slides = useTransition(toggle, null, {
     
@@ -109,11 +115,17 @@ let scoreAnim = useSpring({
 
 
 const delayChange = () => {
-  on(!toggle)
+  if(name !== ""){
+    on(!toggle)
   const interval = setInterval(function(){ 
     setPage("HighScore")
     clearInterval(interval)
 }, 250);//run this thang every 2 seconds
+  } else{
+
+    isNameAbsent(true)
+  }
+  
 }
 
     return (
@@ -121,18 +133,27 @@ const delayChange = () => {
 {slides.map(({ item, key, props }) => (
   item &&
 <animated.form className={classes.root} style = {props} noValidate autoComplete="off">
-<div style = {infoStyles}> You scored  
+<div style = {infoStyles}> Score: 
 <animated.div style={numberCircleStyle}>{scoreAnim.number.interpolate(val => (score !== 0) ? Math.floor(val): 0)}
 </animated.div> </div>
 
-    <div style = {infoStyles} >Time leftover:  
+    <div style = {infoStyles} >Time left:  
     
     <animated.div style={numberCircleStyle}>{timeAnim.number.interpolate(val => (time !== 0) ? Math.floor(val): 0)}
 </animated.div> </div>
     
     
-    <TextField id="standard-basic" value = {name} onChange={(e) => {handleInputChange(e)}} label="Enter name here" />
-    <div style = {buttonStyle}>   <Button onClick={(e) => {addScore(); delayChange()} }>View high scores!</Button>
+    <TextField id="standard-basic" value = {name} 
+    onChange = {(e) => {handleInputChange(e)}} 
+    label="Enter name here" 
+    error={nameAbsent}
+    helperText={nameAbsent ? 'Empty field!' : ' '}
+    />
+    <div style= {{textAlign:"Center"}}>OR</div>
+    <div style = {buttonStyle}> <Button  color="secondary" onClick={(e) => {beAnonymous()} }>Be anyonymous</Button></div>
+    <div style= {{textAlign:"Center"}}>Then</div>
+    <div style = {buttonStyle}>   <Button color="primary" onClick={(e) => {addScore(); delayChange()} }>View high scores!</Button>
+    
 </div>
 </animated.form>
       ))}

@@ -27,7 +27,7 @@ app.get('/api/highScores', function (req, res) {
   console.log('hit')
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("quizScoresDB");
+    var dbo = db.db("heroku_f44w1wcq");
     dbo.collection("scores").find({}).toArray(function(err, result) {
       if (err) throw err;
       console.log(result)
@@ -42,7 +42,7 @@ app.post('/api/add', function (req, res) {
   console.log('hit')
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("quizScoresDB");
+    var dbo = db.db("heroku_f44w1wcq");
     var myobj = req.body
     dbo.collection("scores").insertOne(myobj, function(err, res) {
       if (err) throw err;

@@ -19,7 +19,6 @@ function HighScore() {
 
   const highScoreCon = {
     textAlign: "Center",
-    marginTop: "10vh",
   }
 
   useEffect(() => {
@@ -28,6 +27,14 @@ function HighScore() {
       .then(
         (result) => {
           console.log(result)
+
+          result.sort(function (a, b) {
+            if (b.score - a.score){
+              return b.score - a.score
+            } else {
+              return a.time - b.time
+            }
+});
           setHighScores(result)
         },
         // Note: it's important to handle errors here

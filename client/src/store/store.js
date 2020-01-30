@@ -18,8 +18,16 @@ function Store({ children }) {
   const [page2show, setPage] = useState("Welcome")
   const [name, setName] = useState("")
   const [namePage, goToNamePage] = useState(false)
+  const [goodAlert, showGoodAlert] = useState(false)
+  const [badAlert, showBadAlert] = useState(false)
   
-
+  const reset = () => {
+    setScore(0)
+    setPage("Welcome");
+    setTime(90)
+    setQIndex(0)
+    goToNamePage(false)
+  }
   
   const increaseIndex = () => {
     if(qIndex < questions.length-1 ){
@@ -41,9 +49,17 @@ function Store({ children }) {
      if(bool){
        setResult(true);
        setScore(score + 1)
+       showGoodAlert(true)
+       setInterval(()=>{
+     showGoodAlert(false)
+     }, 2000)
 
      } else{
        setResult(false)
+       showBadAlert(true)
+       setInterval(()=>{
+        showBadAlert(false)
+       }, 2000)
      }
    }
 
@@ -71,12 +87,14 @@ today = mm + '/' + dd + '/' + yyyy;
     .then(res => res.json())
   }
 
-  
-   
+  const beAnonymous = () => {
+setName("Anonymous")
 
- return (
+  }
+  
+  return (
     <QuizContext.Provider value={{questions, qIndex, increaseIndex,score, increaseScore, time, setTime, result,
-     page2show, setPage, name, handleInputChange, addScore, namePage, goToNamePage}}>
+     page2show, reset, setPage, name, handleInputChange, addScore, namePage, goToNamePage, beAnonymous, goodAlert, badAlert}}>
       {[children]}
     </QuizContext.Provider>
   )

@@ -130,7 +130,7 @@ const StyledButton = withStyles({
 
 const questionsChoices = questions[qIndex].choices.map((choice, index) => 
 <div key= {index}><StyledButton onClick={(e) => {increaseScore(choice); setAnimate(!animate); delayChange(); }} 
-variant="contained" color="primary">{choice}</StyledButton>{qIndex}</div>);
+variant="contained" color="primary">{choice}</StyledButton></div>);
     
     return (
 

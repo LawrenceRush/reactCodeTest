@@ -5,8 +5,6 @@ import Score from "../components/Score"
 import Timer from "../components/Timer"
 import { useSpring, animated, config, onRest, useTransition } from 'react-spring'
 import { relative } from 'path'
-import GoodAlert from "../components/GoodAlert"
-import BadAlert from "../components/BadAlert"
 
 function QuizPage() {
     let { qIndex } = useContext(QuizContext)
@@ -20,6 +18,7 @@ function QuizPage() {
 
     const [toggle, on] = useState(true)
     const spreadOut = {
+        marginTop: '20vh',
         display: 'flex',
         justifyContent: 'space-between',
         padding: '0 15vh 0 15vh'
@@ -64,32 +63,16 @@ function QuizPage() {
         }, 500);//run this thang every 2 seconds
     }
 
-
-
-    const showAlert = () => {
-        if (result === true) {
-            setRight(true)
-            console.log('whats going on')
-            setInterval(function () {
-                //setRight(false)
-            }, 3000);
-        } else if (result === false) {
-            setWrong(true)
-            setInterval(function () {
-                setWrong(false)
-            }, 3000);
-
+    useEffect(()=>{
+        if(namePage == true){
+            on(!toggle)
+            delayChange()
         }
+    }, [namePage])
 
-
-    }
-
-    useEffect(() => {
-        showAlert()
-    }, [qIndex])
     return (
-        <div id="quizPageCOn" style={{ marginTop: '20vh', position: "relative", height: "80vh" }}>
-            {questions.length}
+        <div id="quizPageCOn" style={{position: "relative" }}>
+        
             {slides.map(({ item, key, props }) => (
                 item &&
                 <animated.div id="questionCon" style={props}>
@@ -103,8 +86,6 @@ function QuizPage() {
 
             )
             )}
-            {right && <GoodAlert />}
-            {wrong && <BadAlert />}
         </div>
     )
 }
