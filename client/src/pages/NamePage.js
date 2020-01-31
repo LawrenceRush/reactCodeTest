@@ -51,6 +51,10 @@ const buttonStyle = {
   textAlign: "Center"
 }
 
+const textStyle = {
+  textAlign:"center",
+  fontSize: "3vh"
+}
 const numberCircleStyle = {
   display:'inline-block',
   width: "1.5em",
@@ -70,14 +74,14 @@ if (name != ""){
 const slides = useTransition(toggle, null, {
     
   from: {
-    width: 'max-content',
+    width: '30vh',
       textAlign:'left',
       position: 'absolute',
       transform: "translate3d(250vh,0,0)" ,
    
   },
   enter: { 
-    width: 'max-content',
+    width: '30vh',
 
       textAlign:'left',
       position: 'absolute',
@@ -89,7 +93,7 @@ const slides = useTransition(toggle, null, {
       
       },
   leave: {
-    width: 'max-content',
+    width: '30vh',
       textAlign:'left',
       position: 'absolute',
       transform: "translate3d(-250vh,0,0)",
@@ -143,15 +147,15 @@ const delayChange = () => {
 </animated.div> </div>
     
     
-    <TextField id="standard-basic" value = {name} 
+    <TextField style = {{fontSize: "4vh"}} id="standard-basic" value = {name} 
     onChange = {(e) => {handleInputChange(e)}} 
     label="Enter name here" 
     error={nameAbsent}
     helperText={nameAbsent ? 'Empty field!' : ' '}
     />
-    <div style= {{textAlign:"Center"}}>OR</div>
+    <div style= {textStyle}>OR</div>
     <div style = {buttonStyle}> <Button style = {{fontSize:"3vh"}} color="secondary" onClick={(e) => {beAnonymous()} }>Be anyonymous</Button></div>
-    <div style= {{textAlign:"Center"}}>Then</div>
+    <div style= {textStyle}>Then</div>
     <div style = {buttonStyle}>   <Button style = {{fontSize:"3vh"}} color="primary" onClick={(e) => {addScore(); delayChange()} }>View high scores!</Button>
     
 </div>

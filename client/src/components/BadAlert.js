@@ -8,7 +8,11 @@ import {useTransition, animated, config} from 'react-spring'
 
 function MakeAlert() {
     let  [animate, toggle] = useState(false)
-   
+const alertStyle = {
+    height: "7vh",
+    fontSize: "3vh"
+}
+
     const transitions = useTransition(animate, null, {
     from: { 
         left: 0,
@@ -48,7 +52,7 @@ function MakeAlert() {
         <div>
         {transitions.map(({ item, key, props }) =>
     item && 
-        <animated.div style = {props}> <Alert severity="error">
+        <animated.div style = {props}> <Alert style = {alertStyle}severity="error">
           Incorrect
           </Alert></animated.div>
         )}

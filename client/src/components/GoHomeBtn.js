@@ -15,7 +15,7 @@ function GoHomeBtn() {
     
     return (
         <div style = {{textAlign:"center", marginTop: '5vh'}}>
-            <Button onClick={(e) => {reset()}} variant="contained" color="primary">
+            <Button style = {{fontSize:" 3vh"}} onClick={(e) => {reset()}} variant="contained" color="primary">
       Retake?
     </Button>
         </div>

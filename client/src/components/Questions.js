@@ -36,7 +36,7 @@ function McCon() {
         padding: 0,
         width: 'max-content',
         marginBottom: "10px",
-        fontSize: "3vh"
+        
     }
 
     useEffect(()=>{
@@ -125,6 +125,7 @@ const StyledButton = withStyles({
     },
     label: {
       textTransform: 'capitalize',
+      fontSize: "3vh"
     },
   })(Button);
 
