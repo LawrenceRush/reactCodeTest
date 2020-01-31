@@ -11,7 +11,7 @@ function Feedback() {
  return (
      <div>
     
-   
+    
             {badAlert && <BadAlert/>}
             {goodAlert && <GoodAlert/>}
 

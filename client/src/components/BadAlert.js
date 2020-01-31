@@ -2,9 +2,9 @@ import React, {useContext, useEffect, useState} from 'react'
 import {QuizContext} from '../store/store'
 import Alert from '@material-ui/lab/Alert';
 import {useTransition, animated, config} from 'react-spring'
-
-
-
+import ClearIcon from '@material-ui/icons/Clear';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function MakeAlert() {
     let  [animate, toggle] = useState(false)
@@ -52,8 +52,11 @@ const alertStyle = {
         <div>
         {transitions.map(({ item, key, props }) =>
     item && 
-        <animated.div style = {props}> <Alert style = {alertStyle}severity="error">
-          Incorrect
+        <animated.div style = {props}> <Alert icon={false} style = {alertStyle}severity="error">
+       <span>
+           <FontAwesomeIcon icon={faTimes} style = {{marginRight: "10px", fontSize: "4vh"}} />  
+           Incorrect 
+           </span>
           </Alert></animated.div>
         )}
     </div>
