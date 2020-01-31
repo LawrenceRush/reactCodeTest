@@ -9,6 +9,7 @@ import {QuizContext} from '../store/store'
 const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
+      fontSize: "3vh"
     },
     input: {
       display: 'none',

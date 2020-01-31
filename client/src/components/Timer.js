@@ -16,8 +16,8 @@ function Timer() {
     
       
     return (
-        <span>
-            <AccessAlarmsIcon style = {{fontSize: "1em"}}/> {time}
+        <span style = {{fontSize: "3vh"}}>
+            <AccessAlarmsIcon style = {{fontSize: "3vh"}} /> {time}
         </span>
     )
 }

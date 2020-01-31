@@ -28,15 +28,15 @@ function McCon() {
         listStyleType: "none",
         textAlign: 'center',
         display: "Grid",
-        gridTemplateColumns: "7em 7em",
-        gridTemplateRows: "7em 7em",
+        gridTemplateColumns: "20vh 20vh",
+        gridTemplateRows: "20vh 20vh",
         gridColumnGap: "5px",
         gridRowGap: "5px",
         margin: 'auto',
         padding: 0,
         width: 'max-content',
-        marginBottom: "10px"
-        
+        marginBottom: "10px",
+        fontSize: "3vh"
     }
 
     useEffect(()=>{
@@ -138,7 +138,7 @@ variant="contained" color="primary">{choice}</StyledButton></div>);
         <div>
          {slides.map(({ item, key, props }) => (
         <animated.section   style={props} >
-        <h1>{questions[qIndex].title}</h1>  
+        <h1 style = {{fontSize:"3.5vh"}}>{questions[qIndex].title}</h1>  
         <div style = {liStyle}>{questionsChoices}</div>
        
         </animated.section>

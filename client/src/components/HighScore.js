@@ -14,7 +14,8 @@ function HighScore() {
   const liCon = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    justifyItems: "center"
+    justifyItems: "center",
+    fontSize: "3vh"
   };
 
   const highScoreCon = {

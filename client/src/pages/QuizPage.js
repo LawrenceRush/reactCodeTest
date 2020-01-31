@@ -22,6 +22,7 @@ function QuizPage() {
         display: 'flex',
         justifyContent: 'space-between',
         padding: '0 15vh 0 15vh'
+       
     }
 
 

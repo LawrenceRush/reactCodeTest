@@ -7,7 +7,7 @@ function Score() {
     
     let {score} = useContext(QuizContext) 
     return (
-        <span>
+        <span style = {{fontSize: "3vh"}}>
             Score {score}
         </span>
     )

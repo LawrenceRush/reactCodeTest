@@ -43,7 +43,7 @@ const namePageCon= {
 }
 
 const infoStyles = {
-   fontSize: '1.5em',
+   fontSize: '4vh',
  textAlign:'center'
 
 }
@@ -150,9 +150,9 @@ const delayChange = () => {
     helperText={nameAbsent ? 'Empty field!' : ' '}
     />
     <div style= {{textAlign:"Center"}}>OR</div>
-    <div style = {buttonStyle}> <Button  color="secondary" onClick={(e) => {beAnonymous()} }>Be anyonymous</Button></div>
+    <div style = {buttonStyle}> <Button style = {{fontSize:"3vh"}} color="secondary" onClick={(e) => {beAnonymous()} }>Be anyonymous</Button></div>
     <div style= {{textAlign:"Center"}}>Then</div>
-    <div style = {buttonStyle}>   <Button color="primary" onClick={(e) => {addScore(); delayChange()} }>View high scores!</Button>
+    <div style = {buttonStyle}>   <Button style = {{fontSize:"3vh"}} color="primary" onClick={(e) => {addScore(); delayChange()} }>View high scores!</Button>
     
 </div>
 </animated.form>

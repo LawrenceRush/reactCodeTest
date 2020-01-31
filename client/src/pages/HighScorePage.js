@@ -12,7 +12,7 @@ function HighScorePage() {
             height: '100%', width: '100%',
             position: 'absolute',
             transform: "translate3d(250vh,0,0)" ,
-         
+            
         },
         enter: {   
             height: '100%', width: '100%',   
@@ -36,7 +36,8 @@ function HighScorePage() {
       const headerStyle = {
           textAlign:"center",
           fontWeight: "normal",
-        marginTop: "5vh"
+        marginTop: "5vh",
+        fontSize: "5vh"
       }
       
     return (
