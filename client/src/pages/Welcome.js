@@ -32,7 +32,8 @@ function Welcome() {
 
     const textStyle = {
         fontWeight: "normal",
-        marginTop: 0
+        marginTop: 0,
+        fontSize: "5vh"
     }
 
    
