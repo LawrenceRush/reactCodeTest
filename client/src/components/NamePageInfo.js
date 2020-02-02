@@ -49,17 +49,17 @@ const namePageInfoCon = {
   }
 
   let scoreAnim = useSpring({
-    delay: score * 250,
+    delay: 250,
     to: { number: score },
     from: { number: 0 },
     config: { duration: (score * 500) }
   })
 
   let timeAnim = useSpring({
-    delay: 250,
+    delay: (score * 500) +  500,
     to: { number: time },
     from: { number: 0 },
-    config: { duration: (time * 25) }
+    config: { duration: (2000) }
   })
 
   const delayChange = () => {
@@ -85,7 +85,7 @@ const namePageInfoCon = {
         </animated.div>
       </div>
 
-      <div style={infoStyles} >Time left:
+      <div  style={infoStyles} >Time left:
           <animated.div style={numberCircleStyle}>
           {timeAnim.number.interpolate(val => (time !== 0) ? Math.floor(val) : 0)}
         </animated.div>

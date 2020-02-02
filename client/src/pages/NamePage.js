@@ -16,19 +16,19 @@ function NamePage() {
     let {setPage} = useContext(QuizContext)
 
     useEffect(()=>{
-      on(false)
+      on(true)
       },[])
 
-const namePageCon= {
-  position: "relative"
-  }
 
+const namePageCon = {
+  // width: "100vh"
+}
 const slides = useTransition(toggle, null, {
     
   from: {
     
       
-      position: 'absolute',
+      
       transform: "translate3d(250vh,0,0)" ,
    
   },
@@ -36,8 +36,8 @@ const slides = useTransition(toggle, null, {
     
 
       
-      position: 'absolute',
-     ransform: "translate3d(0vh,0,0)",
+      
+     transform: "translate3d(0vh,0,0)",
       
       
       
@@ -45,7 +45,7 @@ const slides = useTransition(toggle, null, {
   leave: {
     
       
-      position: 'absolute',
+      
       transform: "translate3d(-250vh,0,0)",
   },
   
@@ -58,10 +58,10 @@ const slides = useTransition(toggle, null, {
 
 
     return (
-<div id = "namePageContainer" style = {namePageCon}>
+<div id = "namePageContainer" style = {namePageCon} >
 {slides.map(({ item, key, props }) => (
   item &&
-<animated.form   noValidate autoComplete="off">
+<animated.form style = {props}  noValidate autoComplete="off">
 <NamePageInfo/>
 </animated.form>
       ))} 
