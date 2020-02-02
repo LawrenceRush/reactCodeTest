@@ -45,6 +45,7 @@ function MakeAlert() {
     useEffect(() => {
         toggle(true)
         setInterval(()=>{
+            console.log("goodAlert should go away now")
             toggle(false)
             }, 1000)
     }, [])

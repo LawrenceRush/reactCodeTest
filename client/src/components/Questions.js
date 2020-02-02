@@ -39,30 +39,7 @@ function McCon() {
         
     }
 
-    useEffect(()=>{
-     showAlert()
-    },[qIndex])
-    // useEffect(()=>{
-    //   setAnimate(true)
-    // })
-
-    const showAlert = () => {
-    if (result === true){
-        setRight(true)
-        console.log('whats going on')
-        setInterval(function(){ 
-            //setRight(false)
-        }, 3000);
-    } else if (result === false ){
-                setWrong(true)
-            setInterval(function(){ 
-                //setWrong(false)
-            }, 3000);
-        
-    }
     
-
-}
 
 const slides = useTransition(animate, null, {
   config: config.slow,

@@ -23,7 +23,9 @@ const namePageInfoCon = {
   height: "100vh",
   display: "grid",
   gridTemplateColumns: "auto",
-  alignItems: "center"
+  alignItems: "center",
+  width: "50%",
+  margin: "0 auto"
 }
   const infoStyles = {
     fontSize: '4vh',
@@ -56,7 +58,7 @@ const namePageInfoCon = {
   })
 
   let timeAnim = useSpring({
-    delay: (score * 500) +  500,
+    delay: (score == 0) ? 1500 : (score * 500) +  500,
     to: { number: time },
     from: { number: 0 },
     config: { duration: (2000) }

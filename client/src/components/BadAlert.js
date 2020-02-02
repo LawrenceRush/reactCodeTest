@@ -43,6 +43,8 @@ const alertStyle = {
     useEffect(() => {
         toggle(true)
         setInterval(()=>{
+            console.log("bad should go away now")
+
             toggle(false)
             }, 1000)
     }, [])

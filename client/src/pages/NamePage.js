@@ -21,7 +21,8 @@ function NamePage() {
 
 
 const namePageCon = {
-  // width: "100vh"
+   width: "100vh",
+   margin: "0 auto"
 }
 const slides = useTransition(toggle, null, {
     

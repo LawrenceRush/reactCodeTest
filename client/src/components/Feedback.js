@@ -7,6 +7,14 @@ import {useTransition, animated, config} from 'react-spring'
 function Feedback() {
     let {badAlert} = useContext(QuizContext) 
     let {goodAlert} = useContext(QuizContext)
+
+    useEffect(() => {
+
+        badAlert && console.log("badAlert should display")
+    },[badAlert])
+    useEffect(() => {
+        goodAlert && console.log("goodAlert should display")
+    },[goodAlert])
    
  return (
      <div>
