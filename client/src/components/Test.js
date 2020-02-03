@@ -1,37 +1,27 @@
 import React, { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+  import { animated, useTransition } from 'react-spring';
 
 
 const Test = () => {
- 
-
-  const multiAnimation = useSpring({
-    from: { 
-      position:" absolute", 
-      transform: "translate3d(0vh,0,0)",
-      color:"blue"
-  },
-    to: [
-
-        { 
-          position:" absolute", 
-          transform:  "translate3d(25vh,0,0)",
-          color: "green"
-        },
-        { 
-          position:" absolute", 
-          transform:  "translate3d(50vh,0,0)",
-          color: "green"
-        }
-    ]
-        
+  
+  
+  const [on, toggle] = useState(false);
+  
+  const transition = useTransition(on, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
   });
+  
   return (
-    <div>
-     
-      <animated.h1 style={multiAnimation}>Hello World</animated.h1>
-    </div>
-  )
+  <div>
+    {transition.map(({ item, key, props }) => (
+    item && <animated.div style={props} >Hello world</animated.div>
+    ))}
+  
+    <button onClick={() => toggle(!on)}>Change</button>
+  </div>
+  );
 };
 
 export default Test;

@@ -46,10 +46,13 @@ function Store({ children }) {
    }
 
    const gotItRight = (bool) => {
+     showBadAlert(false)
+     showGoodAlert(false)
      if(bool){
        setResult(true);
        setScore(score + 1)
        showGoodAlert(true)
+       console.log("goodAlert should show")
        setInterval(()=>{
      showGoodAlert(false)
      }, 2000)

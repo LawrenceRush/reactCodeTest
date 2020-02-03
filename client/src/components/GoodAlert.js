@@ -8,14 +8,13 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 function MakeAlert() {
-    let  [animate, toggle] = useState(false)
-   
+    let {goodAlert} = useContext(QuizContext)
     const alertStyle = {
         height: "7vh",
         fontSize: "3vh"
     }
 
-    const transitions = useTransition(animate, null, {
+    const transitions = useTransition(goodAlert, null, {
     from: { 
         left: 0,
         right: 0,
@@ -42,14 +41,6 @@ function MakeAlert() {
     },
     })
     
-    useEffect(() => {
-        toggle(true)
-        setInterval(()=>{
-            console.log("goodAlert should go away now")
-            toggle(false)
-            }, 1000)
-    }, [])
-
 
     return (
         <div>

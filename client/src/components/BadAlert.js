@@ -7,13 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function MakeAlert() {
-    let  [animate, toggle] = useState(false)
+    let {badAlert} = useContext(QuizContext)
 const alertStyle = {
     height: "7vh",
     fontSize: "3vh"
 }
 
-    const transitions = useTransition(animate, null, {
+    const transitions = useTransition(badAlert, null, {
     from: { 
         left: 0,
         right: 0,
@@ -40,16 +40,6 @@ const alertStyle = {
     },
     })
     
-    useEffect(() => {
-        toggle(true)
-        setInterval(()=>{
-            console.log("bad should go away now")
-
-            toggle(false)
-            }, 1000)
-    }, [])
-
-
     return (
         <div>
         {transitions.map(({ item, key, props }) =>

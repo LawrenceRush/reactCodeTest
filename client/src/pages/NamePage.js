@@ -21,6 +21,7 @@ function NamePage() {
 
 
 const namePageCon = {
+  //Curiously enough, adding a width prevents animations from cause shakines
    width: "100vh",
    margin: "0 auto"
 }
