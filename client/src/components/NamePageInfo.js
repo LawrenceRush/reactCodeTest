@@ -3,6 +3,7 @@ import { QuizContext } from '../store/store'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { useSpring, animated, useTransition } from 'react-spring'
+import { withStyles } from "@material-ui/core/styles";
 
 function NamePageInfo() {
   let [nameAbsent, isNameAbsent] = useState(false)
@@ -40,6 +41,18 @@ const namePageInfoCon = {
     textAlign: "center",
     fontSize: "3vh"
   }
+
+  const styles = {
+    input1: {
+      height: 50,
+      fontSize: "10em"
+    },
+    input2: {
+      height: 200,
+      fontSize: "3em"
+    }
+  }
+
   const numberCircleStyle = {
     display: 'inline-block',
     width: "1.5em",
@@ -95,12 +108,16 @@ const namePageInfoCon = {
 
 
       <div style={{ textAlign: "Center" }}>
-        <TextField style={{ fontSize: "4vh" }} id="standard-basic" value={name}
+        <TextField style={{ fontSize: "10vh" }} id="standard-basic" value={name}
           onChange={(e) => { handleInputChange(e) }}
           label="Enter name here"
           error={nameAbsent}
           helperText={nameAbsent ? 'Empty field!' : ' '}
-        />
+          inputProps={{
+            style: {fontSize: "3vh"} 
+            }}   
+            InputLabelProps={{style: {fontSize:"3vh"}}} // font size of input label
+            />
       </div>
       <div style={textStyle}>
         OR
